@@ -22,8 +22,9 @@ public class LoanService {
     private final MyTokenService myTokenService;
 
     public LoanResponse create(LoanRequest request, String token) {
-        var customer = customerRepository.findById(myTokenService.getUserId(token)).get();
-        var loan = Loan.of(request, customer);
+        Long userId = myTokenService.getUserId(token);
+        var customer = customerRepository.findById(userId)
+                .orElseThrow(() -> new EntityNotFoundException(String.format("Entity with id %s not found", userId)));
         return LoanResponse.of(loanRepository.save(Loan.of(request, customer)));
     }
 

@@ -44,16 +44,16 @@ public class Customer implements UserDetails {
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Role> roles;
 
-    public static Customer of(CustomerRequest request) {
+    public static Customer of(CustomerRequest customerRequest) {
         var customer = new Customer();
-        customer.setName(request.getName());
-        customer.setEmail(request.getEmail());
-        customer.setCpf(request.getCpf());
-        customer.setRg(request.getRg());
-        customer.setAddress(Address.of(request.getAddress()));
-        customer.setIncome(request.getIncome());
-        customer.setPassword(new BCryptPasswordEncoder().encode(request.getPassword()));
-        customer.setRoles(Role.of(request.getRoleName()));
+        customer.setName(customerRequest.getName());
+        customer.setEmail(customerRequest.getEmail());
+        customer.setCpf(customerRequest.getCpf());
+        customer.setRg(customerRequest.getRg());
+        customer.setAddress(Address.of(customerRequest.getAddress()));
+        customer.setIncome(customerRequest.getIncome());
+        customer.setPassword(new BCryptPasswordEncoder().encode(customerRequest.getPassword()));
+        customer.setRoles(Role.of(customerRequest.getRoleName()));
         return customer;
     }
 

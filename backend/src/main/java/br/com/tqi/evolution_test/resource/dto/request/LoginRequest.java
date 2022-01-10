@@ -12,7 +12,7 @@ public class LoginRequest {
     @NotBlank
     private String password;
 
-    public UsernamePasswordAuthenticationToken of() {
+    public UsernamePasswordAuthenticationToken createUsernamePasswordAuthenticationToken() {
         return new UsernamePasswordAuthenticationToken(username, password);
     }
 }

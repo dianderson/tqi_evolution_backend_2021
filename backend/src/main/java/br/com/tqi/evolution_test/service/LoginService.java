@@ -16,6 +16,7 @@ import javax.persistence.EntityNotFoundException;
 @RequiredArgsConstructor
 public class LoginService {
 
+    private static final String TOKEN_TYPE = "Bearer";
     private final CustomerRepository customerRepository;
     private final AuthenticationManager authenticationManager;
     private final MyTokenService myTokenService;
@@ -25,6 +26,6 @@ public class LoginService {
         String token = myTokenService.createToken(authentication);
         Customer user = customerRepository.findByEmail(request.getName())
                 .orElseThrow(() -> new EntityNotFoundException(String.format("User %s not found", request.getName())));
-        return LoginResponse.of(user, token, "Bearer");
+        return LoginResponse.of(user, token, "TOKEN_TYPE");
     }
 }

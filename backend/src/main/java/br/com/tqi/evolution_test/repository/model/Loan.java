@@ -27,12 +27,12 @@ public class Loan {
     @Max(value = 60, message = "Number of installments can't be greater than 60")
     private Integer numberOfInstallments;
 
-    public static Loan of(LoanRequest request, Customer customer) {
+    public static Loan of(LoanRequest loanRequest, Customer customer) {
         var loan = new Loan();
         loan.setCustomer(customer);
-        loan.setAmount(request.getAmount());
-        loan.setFirstInstallmentDate(request.getFirstInstallmentDate());
-        loan.setNumberOfInstallments(request.getNumberOfInstallments());
+        loan.setAmount(loanRequest.getAmount());
+        loan.setFirstInstallmentDate(loanRequest.getFirstInstallmentDate());
+        loan.setNumberOfInstallments(loanRequest.getNumberOfInstallments());
         return loan;
     }
 }

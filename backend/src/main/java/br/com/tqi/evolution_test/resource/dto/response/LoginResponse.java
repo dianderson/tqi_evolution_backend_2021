@@ -11,11 +11,11 @@ public class LoginResponse {
     private String type;
 
     public static LoginResponse of(Customer customer, String token, String tokenType) {
-        var response = new LoginResponse();
-        response.setUsername(customer.getUsername());
-        response.setRoleDescription(customer.getRoles().get(0).getDescription());
-        response.setToken(token);
-        response.setType(tokenType);
-        return response;
+        var loginResponse = new LoginResponse();
+        loginResponse.setUsername(customer.getUsername());
+        loginResponse.setRoleDescription(customer.getRoles().get(0).getDescription());
+        loginResponse.setToken(token);
+        loginResponse.setType(tokenType);
+        return loginResponse;
     }
 }

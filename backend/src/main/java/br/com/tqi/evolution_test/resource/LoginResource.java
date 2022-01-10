@@ -19,6 +19,6 @@ public class LoginResource {
     @PostMapping
     @ResponseStatus(HttpStatus.ACCEPTED)
     public LoginResponse authentication(@RequestBody @Valid LoginRequest request) {
-        return loginService.authentication(request.of());
+        return loginService.authentication(request.createUsernamePasswordAuthenticationToken());
     }
 }

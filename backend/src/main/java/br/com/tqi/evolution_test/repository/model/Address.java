@@ -28,14 +28,14 @@ public class Address {
     @NotBlank
     private String country;
 
-    public static Address of(AddressRequest request) {
+    public static Address of(AddressRequest addressRequest) {
         var address = new Address();
-        address.setStreetName(request.getStreetName());
-        address.setNumber(request.getNumber());
-        address.setZipCode(request.getZipCode());
-        address.setNeighborhood(request.getNeighborhood());
-        address.setCity(request.getCity());
-        address.setCountry(request.getCountry());
+        address.setStreetName(addressRequest.getStreetName());
+        address.setNumber(addressRequest.getNumber());
+        address.setZipCode(addressRequest.getZipCode());
+        address.setNeighborhood(addressRequest.getNeighborhood());
+        address.setCity(addressRequest.getCity());
+        address.setCountry(addressRequest.getCountry());
         return address;
     }
 }

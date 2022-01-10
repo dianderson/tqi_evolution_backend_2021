@@ -15,15 +15,15 @@ public class CustomerResponse {
     private String roleDescription;
 
     public static CustomerResponse of(Customer customer) {
-        var response = new CustomerResponse();
-        response.setId(customer.getId());
-        response.setName(customer.getName());
-        response.setEmail(customer.getEmail());
-        response.setCpf(customer.getCpf());
-        response.setRg(customer.getRg());
-        response.setAddressResponse(AddressResponse.of(customer.getAddress()));
-        response.setIncome(customer.getIncome());
-        response.setRoleDescription(customer.getRoles().get(0).getDescription());
-        return response;
+        var customerResponse = new CustomerResponse();
+        customerResponse.setId(customer.getId());
+        customerResponse.setName(customer.getName());
+        customerResponse.setEmail(customer.getEmail());
+        customerResponse.setCpf(customer.getCpf());
+        customerResponse.setRg(customer.getRg());
+        customerResponse.setAddressResponse(AddressResponse.of(customer.getAddress()));
+        customerResponse.setIncome(customer.getIncome());
+        customerResponse.setRoleDescription(customer.getRoles().get(0).getDescription());
+        return customerResponse;
     }
 }

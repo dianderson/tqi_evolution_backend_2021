@@ -8,6 +8,6 @@ public class ValidateFirstInstallmentDateHandler implements ConstraintValidator<
 
     @Override
     public boolean isValid(LocalDate localDate, ConstraintValidatorContext constraintValidatorContext) {
-        return localDate.isBefore(LocalDate.now().plusMonths(3));
+        return LocalDate.now().plusMonths(3).isAfter(localDate);
     }
 }

@@ -13,13 +13,13 @@ public class AddressResponse {
     private String country;
 
     public static AddressResponse of(Address address) {
-        var response = new AddressResponse();
-        response.setStreetName(address.getStreetName());
-        response.setNumber(address.getNumber());
-        response.setZipCode(address.getZipCode());
-        response.setNeighborhood(address.getNeighborhood());
-        response.setCity(address.getCity());
-        response.setCountry(address.getCountry());
-        return response;
+        var addressResponse = new AddressResponse();
+        addressResponse.setStreetName(address.getStreetName());
+        addressResponse.setNumber(address.getNumber());
+        addressResponse.setZipCode(address.getZipCode());
+        addressResponse.setNeighborhood(address.getNeighborhood());
+        addressResponse.setCity(address.getCity());
+        addressResponse.setCountry(address.getCountry());
+        return addressResponse;
     }
 }
