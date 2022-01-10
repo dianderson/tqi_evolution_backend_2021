@@ -1,5 +1,6 @@
 package br.com.tqi.evolution_test.repository.model;
 
+import br.com.tqi.evolution_test.config.validation.ValidateFirstInstallmentDate;
 import br.com.tqi.evolution_test.resource.dto.request.LoanRequest;
 import lombok.Data;
 
@@ -20,21 +21,18 @@ public class Loan {
     @NotNull
     private Double amount;
     @NotNull
+    @ValidateFirstInstallmentDate
     private LocalDate firstInstallmentDate;
     @NotNull
     @Max(value = 60, message = "Number of installments can't be greater than 60")
     private Integer numberOfInstallments;
 
     public static Loan of(LoanRequest request, Customer customer) {
-        if (request.getFirstInstallmentDate().isAfter(LocalDate.now().plusMonths(3))) {
-            throw new IllegalArgumentException(String.format("First Installment Date not be more than %s", LocalDate.now().plusMonths(3)));
-        } else {
-            var loan = new Loan();
-            loan.setCustomer(customer);
-            loan.setAmount(request.getAmount());
-            loan.setFirstInstallmentDate(request.getFirstInstallmentDate());
-            loan.setNumberOfInstallments(request.getNumberOfInstallments());
-            return loan;
-        }
+        var loan = new Loan();
+        loan.setCustomer(customer);
+        loan.setAmount(request.getAmount());
+        loan.setFirstInstallmentDate(request.getFirstInstallmentDate());
+        loan.setNumberOfInstallments(request.getNumberOfInstallments());
+        return loan;
     }
 }
